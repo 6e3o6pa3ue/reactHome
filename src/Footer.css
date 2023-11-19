@@ -1,0 +1,115 @@
+footer {
+    background-color: rgb(46, 46, 46);
+    height: 15vh;
+    color: rgb(173, 173, 173);
+    padding: 15px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+}
+.another-background {
+    display: flex;
+    align-items: center;
+    background-color: rgb(38, 38, 38);
+    height: 14.5vh;
+    width: 100%;
+}
+.rights {
+    width: 40%;
+    text-align: left;
+    font-size: 12px;
+}
+.add-info {
+    display: flex;
+    padding-left: 10px;
+}
+.add-info-item {
+    margin: 10px 30px 0 0;
+}
+.add-info-item:hover {
+    cursor: pointer;
+    color: aliceblue;
+}
+.copyrights {
+    padding: 10px;
+}
+.followUs {
+    width: 25%;
+    padding-top: 35px;
+    padding-left: 50px;
+    text-align: left;
+    height: 100%;
+}
+.text-follow {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.icons {
+    display: flex;
+    margin-top: 25px;
+}
+
+.icon {
+    text-align: center;
+    background-color: rgb(57, 57, 57);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin: 0 10px 0 0;
+}
+.icon:hover {
+    cursor: pointer;
+    background-color: rgb(70, 70, 70);
+}
+.imgIcon {
+    padding: 4.5px;
+    width: 20px;
+    height: 20px;
+}
+
+.watchItApp {
+    width: 35%;
+    height: 100%;
+    padding-top: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.stores {
+    display: flex;
+}
+.internetStore {
+    background-color: rgb(50, 50, 50);
+    border-radius: 10px;
+    height: 60px;
+    width: 150px;
+    font-size: 12px;  
+}
+.internetStore:hover {
+    cursor: pointer;
+    background-color: rgb(59, 59, 59);
+}
+.store1 {
+    margin-right: 40px;
+}
+.icon-store {
+    height: 25px;
+    width: 25px;
+}
+.comment {
+    text-align: center;
+    margin: 5px 0 0 0;
+    font-size: 12px;
+}
+.store { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+.store-name {
+    margin-left: 10px;
+    font-size: 16px;
+}
