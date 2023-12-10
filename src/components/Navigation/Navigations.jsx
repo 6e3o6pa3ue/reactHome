@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,13 +11,14 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import logo from '../../img/logo.png'
+import Icon from '../../images/logo.png';
+import { Link, NavLink } from 'react-router-dom';
+import { MENU } from '../../constants/constants';
+import './navigations.css';
 
 
-const pages = ['Home', 'TV Shows', 'About Us'];
+const pages = ['Home', 'TV shows', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 
 function Navigation() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,10 +40,9 @@ function Navigation() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'rgba(15, 15, 15, 0.9)' }}>
+    <AppBar position="static" sx={{backgroundColor: "black"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -59,8 +58,18 @@ function Navigation() {
               textDecoration: 'none',
             }}
           >
-            <img src={logo} alt="logo" width="140" height="40" />
+              <Link to={`/`}> 
+                <img 
+                  src={Icon} 
+                  alt='Icon' 
+                  width='250' 
+                  height='50' 
+                /> 
+              </Link>
+              
+             
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -90,14 +99,14 @@ function Navigation() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {MENU.map(({name, link}, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center"><NavLink className='menuBar' to={link}>{name}</NavLink></Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+         
           <Typography
             variant="h5"
             noWrap
@@ -114,24 +123,26 @@ function Navigation() {
               textDecoration: 'none',
             }}
           >
-            {/* LOGO */}
+            <img src={Icon} alt="Icon"  width='200' height='50' />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'center', marginRight:'10.5rem' }}}>
+            {MENU.map(({ name, link }, index) => (
+              <NavLink
+              key={index}
+              className={({ isActive }) =>
+              `navLink ${isActive ? "isActive" : ''}`
+            }
+            to={link}
+            >
+              {name}
+            </NavLink>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="watchit" src="watchTV\src\components\Navigation\foto.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

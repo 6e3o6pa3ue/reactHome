@@ -6,6 +6,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
+  background-image: url(https://avatars.mds.yandex.net/get-kinopoisk-post-img/1101693/26100c5b49f851337109a5f792436a29/960x540);
+  /* background-color: bisque; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh; 
+  margin: 0; 
+  display: flex;
+  justify-content: center;
+  z-index: +1;
 }
 
 code {
@@ -14,6 +24,6 @@ code {
 }
 .MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2.css-mhc70k-MuiGrid-root{
   display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-around;
 }

@@ -1,0 +1,29 @@
+.btn{
+    background-color: #E50914;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #E50914;
+    width: 100px;
+    height: 30px;
+    font-size: 0.7rem;
+    margin-left: 15px;
+    border-radius: 0;
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+.btn:hover{
+    background-color: transparent;
+}
+.MuiGrid-root .MuiGrid-container{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+

@@ -1,0 +1,22 @@
+.navLink{
+    text-decoration: none;
+    color:white;
+    margin: 0 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.isActive{
+    color: red;
+}
+
+.menuBar{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 400;
+}
+.MuiBox-root{
+    gap: 80px;
+    
+}
