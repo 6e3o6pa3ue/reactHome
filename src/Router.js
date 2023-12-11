@@ -1,40 +1,40 @@
-  import TvShows from './pages/TVShows';
-  import NotFound from './pages/NotFound';
-  import FilmDetails from './pages/FilmDetails';
-  import { createBrowserRouter } from 'react-router-dom';
-  import Main from './layout/Main';
-  import Home from './pages/Home';
+import TvShows from './pages/TVShows';
+import NotFound from './pages/NotFound';
+import FilmDetails from './pages/FilmDetails';
+import { createBrowserRouter } from 'react-router-dom';
+import Main from './layout/Main';
+import Home from './pages/Home';
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main/>,
-      errorElement: <NotFound/>,
-      children:[
-        {
-          path:"/home",
-          element:<Home/>,
-        },
-        {
-          path:"/tvshows",
-          element:<TvShows/>
-        },
-        {
-          path:"/show/:filmId",
-          element:<FilmDetails/>
-        },
-      ]
-    }
-  ])
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main/>,
+    errorElement: <NotFound/>,
+    children:[
+      {
+        path:"/home",
+        element:<Home/>,
+      },
+      {
+        path:"/tvshows",
+        element:<TvShows/>
+      },
+      {
+        path:"/show/:filmId",
+        element:<FilmDetails/>
+      },
+    ]
+  }
+])
 
-  export default router;
+export default router;
 // const mockData = [
 //   {
 //     id: 1, 
 //     name: 'Home Alone', 
 //     image:"https://img1.hotstarext.com/image/upload/f_auto,t_web_m_1x/sources/r1/cms/prod/old_images/MOVIE/922/1770000922/1770000922-h",  
 //     time: '1hr: 50mins'
-//     }, 
+//     }, ]
 //     {
 //     id: 2, 
 //     name: 'Black Adam', 
