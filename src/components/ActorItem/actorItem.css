@@ -1,0 +1,56 @@
+.actors_card button:hover{
+    background-color: transparent;
+    border: 1px solid #D12E27;
+}
+
+.actors_image img{
+    max-width: 100px;
+}
+  
+.actors_image img:hover{
+    position: relative;
+    top: -8px;
+}
+.Name{
+    color: #fff;
+    background-color:rgb(17,17,17);
+    width: 100%;
+    text-align: center;
+    
+}
+
+.actors_card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 25rem;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    margin-left: 90px;
+    gap: 1rem;
+    background-color:rgb(25,25,25);
+    padding: 20px;
+    border-radius: 1%;
+}
+
+.actors_info{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.actors_card button{
+position: absolute;
+cursor: pointer;
+left:340px;
+top: 140px;
+height: 30px;
+background-color: #D12E27;
+border: none;
+color:#fff;
+border-radius: 5%;
+}
+

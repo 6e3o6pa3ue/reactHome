@@ -1,7 +1,11 @@
 
 function TVShows(){
 return (
-  <h1>This is TV Shows page!</h1>
+  <h1 style={{
+    color: "white",
+  }}
+  >
+    This is TV Shows page!</h1>
 )
 }
 

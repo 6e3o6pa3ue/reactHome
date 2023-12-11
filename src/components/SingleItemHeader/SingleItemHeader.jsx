@@ -73,11 +73,8 @@ function SingleItemHeader({
         alt={name}
         style={image ? {} : { marginLeft:'-10rem'}}
         />
+       </div>
       </div>
-      </div>
-
-      
-    
     );
     }
 
