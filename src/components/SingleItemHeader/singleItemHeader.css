@@ -119,3 +119,8 @@
 .image img{
    
 }
+.video{
+    position: absolute;
+    left: 40rem;
+    top:32px;
+}

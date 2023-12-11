@@ -16,7 +16,7 @@ const inputStyle = {
 }
 
 function Home () {
-    const [selectedFilm, setSelectedFilm] = useState(null);
+    const [selectedFilm, setSelectedFilm] = useState('');
     const apiSearch = useSelector((state) => state.search.search);
     const apiData = useRequest(apiSearch);
     const searchRef = useRef("");
@@ -48,8 +48,8 @@ function Home () {
 
     // Фильтрация данных //
     const filteredData = apiData.filter(({ genres, premiered }) => {
-      const matchesGenre = !selectedGenre || genres.includes(selectedGenre);
-      const matchesYear = !selectedYear || premiered.includes(selectedYear);
+      const matchesGenre = !selectedGenre || (genres && genres.includes(selectedGenre));
+      const matchesYear = !selectedYear || (premiered && premiered.includes(selectedYear));
       return matchesGenre && matchesYear;
     });
 
@@ -67,7 +67,9 @@ function Home () {
           style={{
             height: '36px', 
             width: '200px',
-            backgroundColor:"rgba(209, 208, 207,.6)" 
+            backgroundColor:"rgba(209, 208, 207,.6)" ,
+            marginRight: '10px',
+            
           }}
           >
             <option value="">All Films</option>
@@ -92,6 +94,7 @@ function Home () {
               height: '30px', 
               width: '200px', 
               backgroundColor:"rgba(209, 208, 207,.6)",
+              marginLeft: '10px',
             }}
           />
         </Grid>

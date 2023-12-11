@@ -142,7 +142,7 @@ function Navigation() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="watchit" src="watchTV\src\components\Navigation\foto.jpg" />
+                <Avatar  alt="watchit" src="" />
               </IconButton>
             </Tooltip>
             <Menu

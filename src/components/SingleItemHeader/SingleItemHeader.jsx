@@ -19,6 +19,11 @@ function SingleItemHeader({
     return (
       
       <div className="Header">
+         <div className="video">
+      <video controls width="500" height="300">
+        <source src="C:\Users\dima_\OneDrive\Рабочий стол\Скрипт\reactHome\src\components\SingleItemHeader\ФОРСАЖ 10 - Финальный Русский трейлер (4K ULTRA HD) 2023.mp4" type="video/mp4" />
+      </video>
+    </div> 
         <div className="Title">
             <h1>{name}</h1>
           <div className='raiting'>
@@ -62,13 +67,14 @@ function SingleItemHeader({
           <div className='links_circle'><FavoriteIcon style={{color:'#D12E27'}}/></div>
           <div className='links_circle'><AddIcon style={{color:'#D12E27'}}/></div>
         </div>
-
+        
         <div className='tags'>
             <LocalOfferIcon style={{color:'#D12E27', fontSize:'20'}}/>
             <span>tags :</span>
             <span>{genres.join(', ')}</span>  
         </div>
         <div className='image'>
+          
         <img src={image ? image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE} 
         alt={name}
         style={image ? {} : { marginLeft:'-10rem'}}
