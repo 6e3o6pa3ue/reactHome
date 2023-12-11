@@ -13,67 +13,105 @@ const inputStyle = {
     border:'none',
     width:'300px',
     borderRadius:'20px',
-    
-    
-    
 }
 
 function Home () {
     const [selectedFilm, setSelectedFilm] = useState(null);
-  
     const apiSearch = useSelector((state) => state.search.search);
     const apiData = useRequest(apiSearch);
-
-    const searchRef = useRef("")
+    const searchRef = useRef("");
     const dispatch = useDispatch();
+    const [selectedGenre, setSelectedGenre] = useState('');
+    const [selectedYear, setSelectedYear] = useState(''); 
+    
+    // Функция для обработки изменения выбранного жанра //
+    const handleGenreChange = (e) => {
+      setSelectedGenre(e.target.value);
+    };
+    
+    // Функция для обработки изменения введенного года // 
+    const handleYearChange = (e) => {
+      setSelectedYear(e.target.value);
+    };
 
+    useEffect(() => {
+      searchRef.current.focus();
+    },[]);
 
-  useEffect(() => {
-    searchRef.current.focus();
-  },[]);
+    const handleCardClick = (id) => {
+      setSelectedFilm(id)
+    };
 
-  const handleCardClick = (id) => {
-    setSelectedFilm(id)
-  };
+    const handleSearch = (e) => {
+      dispatch(setSearch(e.target.value));
+    };
 
-  const handleSearch = (e) => {
-    dispatch(setSearch(e.target.value));
-  };
+    // Фильтрация данных //
+    const filteredData = apiData.filter(({ genres, premiered }) => {
+      const matchesGenre = !selectedGenre || genres.includes(selectedGenre);
+      const matchesYear = !selectedYear || premiered.includes(selectedYear);
+      return matchesGenre && matchesYear;
+    });
 
-  return (
-    <>
-      <Grid container  
-      sx={{
-        display:'flex', 
-        justifyContent:'center', 
-        paddingTop: '20px', 
-        paddingBottom:'4rem'}}>
-        <input 
-        placeholder='Search Films' 
-        type='text'
-        style={inputStyle} 
-        value={apiSearch} 
-        onChange={handleSearch} 
-        ref={searchRef}
-        />
-      </Grid>
-     
-      <Grid container spacing={2} sx={{padding:"15px"}}>
-     {apiData.map(({id, name, genres, image, premiered}, index) => (
-      <Grid item xs={3} key={index}>
-      <SingleCard
-        id={id}
-        name={name} 
-        time={premiered}
-        genre={genres}
-        image={image ? image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
-        onClick={handleCardClick} 
-      />
-      </Grid>
-      ))}
-    </Grid>
-    </>
-  );
+    return (
+      <>
+        <Grid container  
+          sx={{
+            display:'flex', 
+            justifyContent:'center', 
+            paddingTop: '20px', 
+            paddingBottom:'4rem'
+          }}
+        >
+          <select value={selectedGenre} onChange={handleGenreChange}
+          style={{
+            height: '36px', 
+            width: '200px',
+            backgroundColor:"rgba(209, 208, 207,.6)" 
+          }}
+          >
+            <option value="">All Films</option>
+            <option value="Action">Action</option>
+            <option value="Fantasy">Fantasy</option>
+          </select>
+          <input 
+            placeholder='Search Films' 
+            type='text'
+            style={inputStyle} 
+            value={apiSearch} 
+            onChange={handleSearch} 
+            ref={searchRef}
+
+          />
+          <input
+            type="text"
+            placeholder="Enter Year"
+            value={selectedYear}
+            onChange={handleYearChange}
+            style={{
+              height: '30px', 
+              width: '200px', 
+              backgroundColor:"rgba(209, 208, 207,.6)",
+            }}
+          />
+        </Grid>
+       
+        <Grid container spacing={2} sx={{padding:"15px"}}>
+          {filteredData.map(({ id, name, genres, image, premiered }, index) => (
+            <Grid item xs={3} key={index}>
+              <SingleCard
+                id={id}
+                name={name} 
+                time={premiered}
+                genre={genres}
+                image={image ? image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
+                onClick={handleCardClick} 
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </>
+    );
 }
 
 export default Home;
