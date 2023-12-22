@@ -4,6 +4,9 @@ import FilmDetails from './pages/FilmDetails';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from './layout/Main';
 import Home from './pages/Home';
+import Auth from './layout/Auth';
+import Register from './pages/Auth/Register';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -13,18 +16,35 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/home",
-        element:<Home/>,
+        element: <Home/>
       },
       {
         path:"/tvshows",
-        element:<TvShows/>
+        element:
+        <PrivateRoute> <TvShows/></PrivateRoute>
       },
       {
         path:"/show/:filmId",
         element:<FilmDetails/>
       },
     ]
-  }
+  },
+  {
+    path: "auth/",
+    element: <Auth/>,
+    errorElement: <NotFound/>,
+    children:[
+      {
+        path:"register/",
+        element:<Register/>,
+      },
+      // {
+      //   path:"/tvshows",
+      //   element:<TvShows/>
+      // },
+    ]
+  },
+
 ])
 
 export default router;

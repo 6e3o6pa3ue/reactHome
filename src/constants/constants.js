@@ -6,12 +6,12 @@ export const MENU = [
         link: '/home',
     },
     {
-        name: 'show',
-        link: '/show',
+        name: 'Search-films',
+        link: '/tvshows',
     },
     {
-        name: 'tv shows',
-        link: '/tvshows',
+        name: 'Shows',
+        link: '/show',
     },
    
 ]
