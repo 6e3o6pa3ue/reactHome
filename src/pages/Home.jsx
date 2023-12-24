@@ -6,7 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Typography } from '@mui/material';
 import 'swiper/css';
 import useRequestList from '../hooks/useRequstList';
-import home from './home.css'
+import TitleSingleSlide from "../components/TitleSingleSlide/TitleSingleSlide";
+import { useLocation } from "react-router-dom";
+import "./home.css"
+
 
 function Home() {
   const horrorFilms = useRequestList('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Horror');
@@ -15,10 +18,14 @@ function Home() {
 
   return (
     <>
+    <TitleSingleSlide />
      <Grid container className='listfilm' style={{width: "1500px",
-    marginLeft: "200px"}}>
-        <Grid item xs={12}>
+    marginLeft: "200px",color: "red"}}>
+        <Grid item xs={12}><br></br><br></br><br></br><br></br>
           <Typography variant='h3'>Horror shows</Typography>
+          <Typography variant='h3' className='swipe' sx={{
+            fontSize: "24px"
+          }}>Swipe →</Typography>
           <Swiper
             spaceBetween={50}
             slidesPerView={5}
@@ -42,8 +49,12 @@ function Home() {
             )}
           </Swiper>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant='h3'>Crime shows</Typography>
+        <Grid item xs={12}><br></br>
+          <Typography variant='h3' className='crime'>Crime shows</Typography>
+          <Typography variant='h3' className='swipe' sx={{
+            fontSize:"24px"
+          }}>Swipe →</Typography>
+          
           <Swiper
             spaceBetween={50}
             slidesPerView={5}

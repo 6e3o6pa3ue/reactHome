@@ -11,6 +11,7 @@ const Auth = () => {
             height: '100vh',
             }}>
             <Outlet/>
+            
         </Box>
     );
 };

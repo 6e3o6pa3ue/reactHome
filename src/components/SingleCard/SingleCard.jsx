@@ -17,13 +17,14 @@
 //                 rgba(83, 100, 141, 0.00) 100%
 //               )`,
 //       position: "absolute",
-//       width: "700px",
+//       width: "600px",
 //       height: "222px",
 //       color:"white",
 //       display:'flex', 
 //       flexDirection:'column', 
 //       justifyContent: 'center', 
-//       textAlign:'left'
+//       textAlign:'left',
+//       backgroundSize: "contain",
 //  };
 
 // function SingleCard({
@@ -43,7 +44,7 @@
 //         sx={{
 //           width: "395px",
 //           height: "222px",
-//           position: "relative",
+//           position: "relative", backgroundSize: "350px 222px",
          
 //         }}
 //         image={image}
@@ -84,21 +85,17 @@ import './singleCard.css';
 import { Link } from 'react-router-dom';
 
 const cardStyle = {
-  maxWidth: 345,
-  background: `linear-gradient(
-      90deg, 
-      rgba(0, 0, 0, 0.80) 0%,  
-      rgba(20, 20, 20, 0.40) 50%,  
-      rgba(83, 100, 141, 0.00) 100%
-    )`,
-  position: "relative",
-  width: "700px",
-  height: "222px",
-  color: "white",
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  textAlign: 'left',
+  position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background:
+            'linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0%, rgba(20, 20, 20, 0.40) 50%, rgba(83, 100, 141, 0.00) 100%)',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '8px',
 };
 
 function SingleCard({
@@ -109,13 +106,15 @@ function SingleCard({
 }) {
 
   return (
-    <Card sx={{ maxWidth: 700 }}>
+    <Card sx={{ maxWidth: 300 }}>
       <CardActionArea sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <CardMedia
           sx={{
-            width: "395px",
+            width: "100%",
             height: "222px",
             position: "relative",
+            objectFit: 'cover',
+            backgroundSize: "100% 100%",
           }}
           image={image}
           alt="Image"

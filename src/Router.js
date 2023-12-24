@@ -7,25 +7,30 @@ import Home from './pages/Home';
 import Auth from './layout/Auth';
 import Register from './pages/Auth/Register';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import ActorInfo from './pages/ActorInfo.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main/>,
+    element:<PrivateRoute> <Main/></PrivateRoute>,
     errorElement: <NotFound/>,
     children:[
       {
         path:"/home",
-        element: <Home/>
+        element:  <Home/> 
       },
       {
         path:"/tvshows",
-        element:
-        <PrivateRoute> <TvShows/></PrivateRoute>
+        element:<TvShows/>
+        
       },
       {
         path:"/show/:filmId",
         element:<FilmDetails/>
+      },
+      {
+        path:"/actor/:id",
+        element:<ActorInfo/>
       },
     ]
   },
@@ -38,16 +43,16 @@ const router = createBrowserRouter([
         path:"register/",
         element:<Register/>,
       },
-      // {
-      //   path:"/tvshows",
-      //   element:<TvShows/>
-      // },
     ]
   },
-
+  
 ])
 
 export default router;
+// {
+//   path:"/tvshows",
+//   element:<TvShows/>
+// },
 // const mockData = [
 //   {
 //     id: 1, 

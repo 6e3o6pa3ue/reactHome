@@ -89,6 +89,7 @@ function TVShows() {
               onClick={handleCardClick}
             />
           </Grid>
+          
         ))}
       </Grid>
     </>
