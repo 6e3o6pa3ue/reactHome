@@ -1,0 +1,19 @@
+.listfilm{
+    display: flex;
+}
+.css-gxk0c0-MuiCardMedia-root{
+    background: brown;
+}
+.swipe{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-end;
+    animation: blink 2s infinite;
+    color: rgb(78, 75, 75);
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }

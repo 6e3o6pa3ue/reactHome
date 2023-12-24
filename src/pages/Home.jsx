@@ -1,120 +1,86 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import SingleCard from '../components/SingleCard/SingleCard';
 import Grid from "@mui/material/Grid";
-import useRequest from '../hooks/useRequest';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSearch } from '../store/SearchSlice';
 import { DEFAULT_IMAGE } from '../constants/constants';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Typography } from '@mui/material';
+import 'swiper/css';
+import useRequestList from '../hooks/useRequstList';
+import TitleSingleSlide from "../components/TitleSingleSlide/TitleSingleSlide";
+import { useLocation } from "react-router-dom";
+import "./home.css"
 
-const inputStyle = {
-    color:'black',
-    backgroundColor:'rgba(209, 208, 207,.6)',
-    height:'30px',
-    border:'none',
-    width:'300px',
-    borderRadius:'20px',
-}
 
-function Home () {
-    const [selectedFilm, setSelectedFilm] = useState('');
-    const apiSearch = useSelector((state) => state.search.search);
-    const apiData = useRequest(apiSearch);
-    const searchRef = useRef("");
-    const dispatch = useDispatch();
-    const [selectedGenre, setSelectedGenre] = useState('');
-    const [selectedYear, setSelectedYear] = useState(''); 
-    
-    // Функция для обработки изменения выбранного жанра //
-    const handleGenreChange = (e) => {
-      setSelectedGenre(e.target.value);
-    };
-    
-    // Функция для обработки изменения введенного года // 
-    const handleYearChange = (e) => {
-      setSelectedYear(e.target.value);
-    };
+function Home() {
+  const horrorFilms = useRequestList('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Horror');
+  const crimeFilms = useRequestList('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/crime');
+ 
 
-    useEffect(() => {
-      searchRef.current.focus();
-    },[]);
-
-    const handleCardClick = (id) => {
-      setSelectedFilm(id)
-    };
-
-    const handleSearch = (e) => {
-      dispatch(setSearch(e.target.value));
-    };
-
-    // Фильтрация данных //
-    const filteredData = apiData.filter(({ genres, premiered }) => {
-      const matchesGenre = !selectedGenre || (genres && genres.includes(selectedGenre));
-      const matchesYear = !selectedYear || (premiered && premiered.includes(selectedYear));
-      return matchesGenre && matchesYear;
-    });
-
-    return (
-      <>
-        <Grid container  
-          sx={{
-            display:'flex', 
-            justifyContent:'center', 
-            paddingTop: '20px', 
-            paddingBottom:'4rem'
-          }}
-        >
-          <select value={selectedGenre} onChange={handleGenreChange}
-          style={{
-            height: '36px', 
-            width: '200px',
-            backgroundColor:"rgba(209, 208, 207,.6)" ,
-            marginRight: '10px',
-            
-          }}
+  return (
+    <>
+    <TitleSingleSlide />
+     <Grid container className='listfilm' style={{width: "1500px",
+    marginLeft: "200px",color: "red"}}>
+        <Grid item xs={12}><br></br><br></br><br></br><br></br>
+          <Typography variant='h3'>Horror shows</Typography>
+          <Typography variant='h3' className='swipe' sx={{
+            fontSize: "24px"
+          }}>Swipe →</Typography>
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={5}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
           >
-            <option value="">All Films</option>
-            <option value="Action">Action</option>
-            <option value="Fantasy">Fantasy</option>
-          </select>
-          <input 
-            placeholder='Search Films' 
-            type='text'
-            style={inputStyle} 
-            value={apiSearch} 
-            onChange={handleSearch} 
-            ref={searchRef}
-
-          />
-          <input
-            type="text"
-            placeholder="Enter Year"
-            value={selectedYear}
-            onChange={handleYearChange}
-            style={{
-              height: '30px', 
-              width: '200px', 
-              backgroundColor:"rgba(209, 208, 207,.6)",
-              marginLeft: '10px',
-            }}
-          />
+            {horrorFilms ? (
+              horrorFilms.map((show, index) => (
+                <SwiperSlide key={index}>
+                  <SingleCard
+                    id={show.id}
+                    name={show.name}
+                    premiered={show.premiered}
+                    genres={show.genres}
+                    image={show.image ? show.image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
+                  />
+                </SwiperSlide>
+              ))
+            ) : (
+              <Typography variant='body1'>Loading Horror films...</Typography>
+            )}
+          </Swiper>
         </Grid>
-       
-        <Grid container spacing={2} sx={{padding:"15px"}}>
-          {filteredData.map(({ id, name, genres, image, premiered }, index) => (
-            <Grid item xs={3} key={index}>
-              <SingleCard
-                id={id}
-                name={name} 
-                time={premiered}
-                genre={genres}
-                image={image ? image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
-                onClick={handleCardClick} 
-              />
-            </Grid>
-          ))}
+        <Grid item xs={12}><br></br>
+          <Typography variant='h3' className='crime'>Crime shows</Typography>
+          <Typography variant='h3' className='swipe' sx={{
+            fontSize:"24px"
+          }}>Swipe →</Typography>
+          
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={5}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {crimeFilms ? (
+              crimeFilms.map((show, index) => (
+                <SwiperSlide key={index}>
+                  <SingleCard
+                    id={show.id}
+                    name={show.name}
+                    premiered={show.premiered}
+                    genres={show.genres}
+                    image={show.image ? show.image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
+                  />
+                </SwiperSlide>
+              ))
+            ) : (
+              <Typography variant='body1'>Loading Crime films...</Typography>
+            )}
+          </Swiper>
         </Grid>
-      </>
-    );
+      </Grid>
+    </>
+  );
 }
 
 export default Home;

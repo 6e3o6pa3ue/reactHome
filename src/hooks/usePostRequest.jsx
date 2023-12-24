@@ -1,30 +1,32 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
-function useRequest (search) {
+function useRequest (url , data) {
     const [apiData, setApiData] = useState([]);
     useEffect(() => {
         async function makeRequest(){
           try{
-            if(search.length >= 3){
-            const response = await axios.get(`https://dolphin-app-pc6ii.ondigitalocean.app/article?q=${search}`);
+            if(!url || !data){
+                setApiData([]);
+                return;
+            }
+            const response = await axios.post(url, data {
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            });
             setApiData(response.data);
-          }
-          if(search.length === 0){
-            setApiData([]);
-          }
           }catch(error){
             console.error(error);
           }
         }
         makeRequest()
-      }, [search]);
+      }, [url,data]);
     
       return apiData;
 }
 
-export default useRequest;
+export default usePostRequest;
 
 
 

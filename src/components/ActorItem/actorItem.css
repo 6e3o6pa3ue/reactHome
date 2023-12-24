@@ -1,6 +1,7 @@
-.actors_card button:hover{
+.actor_btn:hover{
     background-color: transparent;
     border: 1px solid #D12E27;
+    text-decoration: none; 
 }
 
 .actors_image img{
@@ -42,7 +43,7 @@
     font-size: 1.1rem;
 }
 
-.actors_card button{
+.actor_btn {
 position: absolute;
 cursor: pointer;
 left:340px;
@@ -52,5 +53,7 @@ background-color: #D12E27;
 border: none;
 color:#fff;
 border-radius: 5%;
+text-decoration: none; 
+
 }
 
