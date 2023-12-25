@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleRegistration } from "../../store/AuthSlice";
 import { useNavigate } from "react-router-dom";
 
+
 const Register = () => {
         const [fullName, setFullName] = useState('');
         const [email, setEmail] = useState('');
@@ -39,14 +40,14 @@ const Register = () => {
             onSubmit={handleFormSubmit}
             >
                 <h1>Registration</h1>
-                <TextField 
+                <TextField className="form"
                 value={fullName} 
                 onChange={(e) => setFullName(e.target.value)} 
                 type="text" 
                 name="fullname" 
                 helperText = {fullName.length < 5 ? 'too short' : ''}
                 />
-                <TextField 
+                <TextField className="form__group"
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}  
                 type="email" 
