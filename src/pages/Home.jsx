@@ -1,81 +1,119 @@
-import React, { useEffect, useState, useRef } from 'react';
-import SingleCard from '../components/SingleCard/SingleCard';
+import { useEffect, useState, useRef } from "react";
+import SingleCard from "../components/SingleCard/SingleCard";
 import Grid from "@mui/material/Grid";
-import { DEFAULT_IMAGE } from '../constants/constants';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Typography } from '@mui/material';
-import 'swiper/css';
-import useRequestList from '../hooks/useRequstList';
+import { useDispatch, useSelector } from "react-redux";
+import { setSearch } from "../store/SearchSlice";
+import { DEFAULT_IMAGE } from "../constants/constants";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, EffectCoverflow } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css";
+import "swiper/css/bundle";
+import useReqGenre from "../hooks/useReqGenre";
+import "./home.css";
 import TitleSingleSlide from "../components/TitleSingleSlide/TitleSingleSlide";
-import { useLocation } from "react-router-dom";
-import "./home.css"
+
 
 
 function Home() {
-  const horrorFilms = useRequestList('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Horror');
-  const crimeFilms = useRequestList('https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/crime');
- 
-
+  const actionFilms = useReqGenre(
+    "https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Action"
+  );
+  const comedyFilms = useReqGenre(
+    "https://dolphin-app-pc6ii.ondigitalocean.app/article/byGenre/Comedy"
+  );
   return (
     <>
-    <TitleSingleSlide />
-     <Grid container className='listfilm' style={{width: "1500px",
-    marginLeft: "200px",color: "red"}}>
-        <Grid item xs={12}><br></br><br></br><br></br><br></br>
-          <Typography variant='h3'>Horror shows</Typography>
-          <Typography variant='h3' className='swipe' sx={{
-            fontSize: "24px"
-          }}>Swipe →</Typography>
+      <TitleSingleSlide />
+      <Grid container>
+        <Grid item xs={12}>
+          <h1 style={{ marginLeft: "1.5rem" }} className="title" variant="h3">
+            Action Shows
+          </h1>
           <Swiper
-            spaceBetween={50}
+            effect={"coverflow"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            centeredSlides={true}
+            loop={true}
+            modules={[Navigation, EffectCoverflow]}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            style={{ margin: "25px 20px" }}
+            spaceBetween={20}
             slidesPerView={5}
-            onSlideChange={() => console.log('slide change')}
+            initialSlide={7}
+            onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            {horrorFilms ? (
-              horrorFilms.map((show, index) => (
-                <SwiperSlide key={index}>
-                  <SingleCard
-                    id={show.id}
-                    name={show.name}
-                    premiered={show.premiered}
-                    genres={show.genres}
-                    image={show.image ? show.image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
-                  />
-                </SwiperSlide>
-              ))
-            ) : (
-              <Typography variant='body1'>Loading Horror films...</Typography>
-            )}
+            {actionFilms?.map((show, index) => (
+              <SwiperSlide key={index}>
+                <SingleCard
+                  id={show.id}
+                  name={show.name}
+                  time={show.premiered}
+                  image={
+                    show.image
+                      ? show.image.medium || DEFAULT_IMAGE
+                      : DEFAULT_IMAGE
+                  }
+                  // onClick={handleCardClick}
+                />
+              </SwiperSlide>
+            ))}
+            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
           </Swiper>
         </Grid>
-        <Grid item xs={12}><br></br>
-          <Typography variant='h3' className='crime'>Crime shows</Typography>
-          <Typography variant='h3' className='swipe' sx={{
-            fontSize:"24px"
-          }}>Swipe →</Typography>
-          
+        <Grid item xs={12}>
+          <h1 style={{ marginLeft: "1.5rem" }} className="title" variant="h3">
+            Comedy Shows
+          </h1>
           <Swiper
-            spaceBetween={50}
+            effect={"coverflow"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            centeredSlides={true}
+            loop={true}
+            modules={[Navigation, EffectCoverflow]}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            style={{ margin: "25px 20px" }}
+            spaceBetween={30}
             slidesPerView={5}
-            onSlideChange={() => console.log('slide change')}
+            initialSlide={7}
+            onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            {crimeFilms ? (
-              crimeFilms.map((show, index) => (
-                <SwiperSlide key={index}>
-                  <SingleCard
-                    id={show.id}
-                    name={show.name}
-                    premiered={show.premiered}
-                    genres={show.genres}
-                    image={show.image ? show.image.medium || DEFAULT_IMAGE : DEFAULT_IMAGE}
-                  />
-                </SwiperSlide>
-              ))
-            ) : (
-              <Typography variant='body1'>Loading Crime films...</Typography>
-            )}
+            {comedyFilms?.map((show, index) => (
+              <SwiperSlide key={index}>
+                <SingleCard
+                  id={show.id}
+                  name={show.name}
+                  time={show.premiered}
+                  image={
+                    show.image
+                      ? show.image.medium || DEFAULT_IMAGE
+                      : DEFAULT_IMAGE
+                  }
+                  // onClick={handleCardClick}
+                />
+              </SwiperSlide>
+            ))}
+            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
           </Swiper>
         </Grid>
       </Grid>

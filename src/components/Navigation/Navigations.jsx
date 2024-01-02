@@ -58,7 +58,7 @@ function Navigation() {
               textDecoration: 'none',
             }}
           >
-              <Link to={`/`}> 
+              <Link to={`/home`}> 
                 <img 
                   src={Icon} 
                   alt='Icon' 
@@ -138,7 +138,11 @@ function Navigation() {
             </NavLink>
             ))}
           </Box>
-
+          <Link to="/auth/register">
+                    <h2 className='spinner' style={{ cursor: 'pointer',textDecoration:'none !important', }}>Login</h2>
+          </Link>
+          
+{/* 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -167,7 +171,7 @@ function Navigation() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

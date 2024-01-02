@@ -20,3 +20,25 @@
     gap: 80px;
 }
 
+h2 {
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: #666 ;
+    transition: 1s;
+    cursor: pointer;
+    border: solid;
+    text-decoration: none !important;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  h2:hover {
+    color:red;
+    text-shadow: 0 0 10px red;
+  }
+.css-2uchni{
+    
+    padding-left: 20px;
+
+  }

@@ -1,0 +1,52 @@
+.img{
+    max-width: 25rem;
+    border-radius: 10%;
+}
+.profile-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 150px;
+    gap: 40px;
+}
+.skills{
+    color: azure;
+}
+.p{
+    color: rgb(255, 0, 0);
+    font-size: 25px;
+}
+h3{
+    color: rgb(255, 0, 0);
+}
+.name{
+    color: bisque;
+}
+/* .link{
+    color:white;
+    text-decoration: none;
+} */
+@property --r {
+    syntax: '<length-percentage>';
+    initial-value: 0px;
+    inherits: false
+  }
+  .link{
+    place-self: center;
+    border: solid 2px #0001;
+    padding: 0 1em;
+    text-decoration: none;
+    /* margin: 200px auto; */
+    border-radius: 2em;
+    box-shadow: inset 1px 3px 1px #fff4;
+    background: radial-gradient(circle at var(--x, 0%) var(--y, 0%), black calc(var(--r) - 1px), rgb(255, 0, 0) var(--r)) border-box;
+    color: white;
+    font: 1.5em/ 2.25 ubuntu, sans-serif;
+    transition: --r .35s;
+  
+    &:hover { --r: 100% }
+  }
+
+  .ulSkill{
+    font-size: 20px;
+  }

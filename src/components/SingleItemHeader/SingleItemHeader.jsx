@@ -16,20 +16,10 @@ function SingleItemHeader({
   views, 
   averageRuntime, 
   image,
-  videoUrl // Добавим аргумент videoUrl
+  
 }) {
   return (
     <div className="Header">
-      <div className="video">
-        <iframe
-          width="500"
-          height="300"
-          src={"" } // Используйте переданный URL для встраивания YouTube видео
-          title={name}
-          allowFullScreen
-        />
-      </div>
-
       <div className="Title">
         <h1>{name}</h1>
         <div className='raiting'>
