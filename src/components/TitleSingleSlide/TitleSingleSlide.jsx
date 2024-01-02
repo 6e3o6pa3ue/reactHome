@@ -44,16 +44,16 @@ function TitleSingleSlide () {
               <SwiperSlide key={index}>
                 <Card className="Card" sx={{
                 position: 'relative',
-                left:'100px',
+                backgroundColor:'black',
                 backgroundImage:` 
-                linear-gradient(
-                    115deg, 
-                    rgba(0, 0, 0, 1) 0%, 
-                    rgba(0, 0, 0, 93) 35%, 
-                    rgba(20, 20, 20, 0) 50%,
-                    rgba(0, 0, 0, 87) 67%,  
-                    rgba(0, 0, 0, 90) 100%
-                ),
+                // linear-gradient(
+                //     115deg, 
+                //     rgba(0, 0, 0, 1) 0%, 
+                //     rgba(0, 0, 0, 93) 35%, 
+                //     rgba(20, 20, 20, 0) 50%,
+                //     rgba(0, 0, 0, 87) 67%,  
+                //     rgba(0, 0, 0, 90) 100%
+                // ),
                 url(${show.image ? show.image.original || DEFAULT_IMAGE : DEFAULT_IMAGE})`,
               }}>
                 <CardActionArea sx={CardActionStyle}>

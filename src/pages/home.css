@@ -17,3 +17,26 @@
     50% { opacity: 0.5; }
     100% { opacity: 1; }
   }
+  @import url('https://fonts.googleapis.com/css2?family=Dhurjati&display=swap');
+  /* .title{
+    color: #FF002E;
+    text-transform: uppercase;
+    
+ } */
+ 
+ .swiper-button-prev, .swiper-button-next{
+     color: white;
+     background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10%;
+    
+ }
+ .title {
+    font-size: 75px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ff0000, 0 0 80px #ff0000, 0 0 90px #ff0000, 0 0 100px #ff0000, 0 0 150px #ff0000;
+    margin-bottom: 75px;
+    text-align: center;
+  }

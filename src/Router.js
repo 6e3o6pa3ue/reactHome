@@ -8,6 +8,7 @@ import Auth from './layout/Auth';
 import Register from './pages/Auth/Register';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import ActorInfo from './pages/ActorInfo.jsx'
+import ITProfile from './pages/ITProfile;.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path:"/actor/:id",
         element:<ActorInfo/>
+      },
+      {
+        path:"/aboutme",
+        element:<ITProfile/>
       },
     ]
   },

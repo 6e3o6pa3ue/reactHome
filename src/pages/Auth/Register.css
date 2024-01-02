@@ -1,0 +1,32 @@
+/* Register.css */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Добавляем анимацию и стили */
+  .animatedForm {
+    animation: fadeIn 0.5s ease-in-out;
+    transition: background-color 0.3s ease;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .registrationForm,
+  .loginForm {
+    width: 400px;
+    max-width: 100%;
+  }
+  
+  /* Дополнительные стили по желанию */
+  

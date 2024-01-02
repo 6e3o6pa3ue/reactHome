@@ -1,32 +1,4 @@
-/* 
-.btn{
-    background-color: #E50914;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border:1px solid #E50914;
-    width: 100px;
-    height: 30px;
-    font-size: 0.7rem;
-    margin-left: 12rem;
-    border-radius: 0;
-    text-decoration: none;
-    color: #fff;
-    
-}
-
-.btn:hover{
-    background-color: transparent;
-}
-/* .MuiGrid-root .MuiGrid-container{
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    flex-wrap: wrap;
-    justify-content: center;
-   
-} */ */
-.card {
+  /* .card {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,20 +9,37 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 8px;
-  }
-  
+  } 
+
   .btnContainer {
     text-align: right;
-    padding: 40px; /* Добавим немного отступа для кнопки */
-  }
+    padding: 40px; }
   
-  .btn {
+    .btn:hover{
+      background-color: transparent;
+    }  */
+    .MuiGrid-container .css-1x7ba0i-MuiGrid-root{
+      all: unset;
+      display: flex;
+      width: 100%;
+      height: 200px;
+      margin-right: 10px;
+      counter-increment: gallery-cell;
+    }
+    .MuiGrid-container .css-1x7ba0i-MuiGrid-root::before{
+      
+    }
+    .btn {
+     background-color: #D12E27;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #D12E27;
+    width: 100px;
+    height: 30px;
+    font-size: 0.7rem;
+    margin-left: 15px;
+    border-radius: 0;
     text-decoration: none;
-    color: white;
-    background-color: #007bff;
-    padding: 8px 16px;
-    border-radius: 4px;
-  }
-  .btn:hover{
-    background-color: transparent;
-}
+    color: #fff;
+    }
